@@ -21,6 +21,7 @@ namespace Task1.ConsoleUI
             return string.Compare(lhs.Author, rhs.Author, StringComparison.OrdinalIgnoreCase);
         }
     }
+
     class SortBooksByReleaseYear : IComparer<Book>
     {
         int IComparer<Book>.Compare(Book lhs, Book rhs)
@@ -28,6 +29,7 @@ namespace Task1.ConsoleUI
             return lhs.ReleaseYear - rhs.ReleaseYear;
         }
     }
+
     class SortBooksByPrice : IComparer<Book>
     {
         int IComparer<Book>.Compare(Book lhs, Book rhs)

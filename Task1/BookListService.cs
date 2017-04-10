@@ -37,10 +37,8 @@ namespace Task1
             if (ReferenceEquals(book, null))
                 throw new ArgumentNullException();
 
-            if (!bookList.Contains(book))
-                throw new ArgumentException("There is no such book");
-
-            bookList.Remove(book);
+            if (!bookList.Remove(book))
+                throw new ArgumentException("There is no such book");            
         }
 
         public Book FindBookByTag(Predicate<Book> tag)
