@@ -16,7 +16,7 @@ namespace Task1
             filePath = path;
         }
 
-        public BookListStorage() : this("BookList.txt")
+        public BookListStorage() : this("BookListByDefault.txt")
         { }
 
         public IEnumerable<Book> ReadBooksFromFile()
@@ -36,7 +36,8 @@ namespace Task1
                     listOfBooks.Add(new Book(title, author, releaseYear, price));
                 }
             }
-                return listOfBooks;
+
+            return listOfBooks;
         }
 
         public void WriteBooksToFile(IEnumerable<Book> bookList)

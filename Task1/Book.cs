@@ -107,7 +107,7 @@ namespace Task1
             if (ReferenceEquals(other, null))
                 return 1;
 
-            return Title.CompareTo(other.Title);
+            return ToString().CompareTo(other.ToString());
         }
     }
 }
