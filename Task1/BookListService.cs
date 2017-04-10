@@ -43,26 +43,41 @@ namespace Task1
 
         public Book FindBookByTag(Predicate<Book> tag)
         {
+            if (ReferenceEquals(tag, null))
+                throw new ArgumentNullException();
+
             return bookList.Find(tag);
         }
         
         public void SortBooksByTag(Comparison<Book> tag)
         {
+            if (ReferenceEquals(tag, null))
+                throw new ArgumentNullException();
+
             bookList.Sort(tag);
         }
 
         public void SortBooksByTag(IComparer<Book> tag)
         {
+            if (ReferenceEquals(tag, null))
+                throw new ArgumentNullException();
+
             bookList.Sort(tag);
         }
 
         public void LoadBooksFromStorage(BookListStorage storage)
         {
+            if (ReferenceEquals(storage, null))
+                throw new ArgumentNullException();
+
             bookList = new List<Book>(storage.ReadBooksFromFile());
         }
 
         public void SaveBooksInStorage(BookListStorage storage)
         {
+            if (ReferenceEquals(storage, null))
+                throw new ArgumentNullException();
+
             storage.WriteBooksToFile(bookList);
         }
 
