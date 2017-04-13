@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Task1
 {
-    public class BookListStorage
+    public class BookListStorage : IStorage
     {
         private string filePath;
 
