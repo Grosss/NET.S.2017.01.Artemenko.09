@@ -27,20 +27,39 @@ namespace Task1.ConsoleUI
             firstBookListService.AddBook(book3);
             firstBookListService.AddBook(book4);
             firstBookListService.AddBook(book5);
-            foreach (var x in firstBookListService)
+            foreach (var x in firstBookListService.GetBookList())
                 Console.WriteLine(x);
             Console.WriteLine();
                         
             firstBookListService.SaveBooksInStorage(storage);                        
-            foreach (var x in storage.ReadBooksFromFile())
+            foreach (var x in storage.LoadFromFile())
                 Console.WriteLine(x);
             Console.WriteLine();
 
             secondBookListService.LoadBooksFromStorage(storage);
             secondBookListService.SortBooksByTag(new SortBooksByTitle());
-            foreach (var x in secondBookListService)
+            foreach (var x in secondBookListService.GetBookList())
                 Console.WriteLine(x);
+            Console.WriteLine();
+
+            secondBookListService.SortBooksByTag(CompareByPrice);
+            foreach (var x in secondBookListService.GetBookList())
+                Console.WriteLine(x);
+            Console.WriteLine();
+
+            Console.WriteLine(secondBookListService.FindBookByTag(FindBySpecialTitle));
+            
             Console.ReadLine();
+        }
+
+        public static int CompareByPrice(Book lhs, Book rhs)
+        {
+            return decimal.Compare(lhs.Price, rhs.Price);
+        }
+
+        public static bool FindBySpecialTitle(Book book)
+        {
+            return book.Title == "third";
         }
     }
 }
