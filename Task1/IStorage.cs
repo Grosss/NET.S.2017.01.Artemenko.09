@@ -8,7 +8,7 @@ namespace Task1
 {
     interface IStorage
     {
-        IEnumerable<Book> ReadBooksFromFile();
-        void WriteBooksToFile(IEnumerable<Book> bookList);
+        IEnumerable<Book> LoadFromFile();
+        void SaveToFile(IEnumerable<Book> bookList);
     }
 }

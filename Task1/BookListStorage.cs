@@ -19,7 +19,7 @@ namespace Task1
         public BookListStorage() : this("BookListByDefault.txt")
         { }
 
-        public IEnumerable<Book> ReadBooksFromFile()
+        public IEnumerable<Book> LoadFromFile()
         {
             var listOfBooks = new List<Book>();
 
@@ -40,7 +40,7 @@ namespace Task1
             return listOfBooks;
         }
 
-        public void WriteBooksToFile(IEnumerable<Book> bookList)
+        public void SaveToFile(IEnumerable<Book> bookList)
         {
             if (bookList == null)
                 throw new ArgumentException();

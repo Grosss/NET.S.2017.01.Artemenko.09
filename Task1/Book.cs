@@ -8,9 +8,9 @@ namespace Task1
 {
     public class Book : IEquatable<Book>, IComparable, IComparable<Book>
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public int ReleaseYear { get; set; }
+        public string Title { get; }
+        public string Author { get; }
+        public int ReleaseYear { get; }
         public decimal Price { get; set; }
 
         public Book(string title, string author, int releaseYear, decimal price)
@@ -35,7 +35,11 @@ namespace Task1
         {
             unchecked
             {
-                return ToString().GetHashCode();
+                int hash = 17;
+                hash = hash * 23 + Title.GetHashCode();
+                hash = hash * 23 + Author.GetHashCode();
+                hash = hash * 23 + ReleaseYear.GetHashCode();
+                return hash;
             }
         }
 
@@ -61,16 +65,8 @@ namespace Task1
             if (ReferenceEquals(null, book))
                 return false;
 
-            if (Title != book.Title)
-                return false;
-
-            if (Author != book.Author)
-                return false;
-
-            if (ReleaseYear != book.ReleaseYear)
-                return false;
-
-            if (Price != book.Price)
+            if (Title != book.Title || Author != book.Author 
+                || ReleaseYear != book.ReleaseYear || Price != book.Price)
                 return false;
 
             return true;

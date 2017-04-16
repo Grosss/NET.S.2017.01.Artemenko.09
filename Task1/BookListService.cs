@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    public class BookListService : IEnumerable<Book>
+    public class BookListService
     {
         private List<Book> bookList;
+
+        #region Constructors
 
         public BookListService()
         {
@@ -20,6 +22,10 @@ namespace Task1
         {
             bookList = new List<Book>(books);
         }
+
+        #endregion
+
+        #region Required functionality
 
         public void AddBook(Book book)
         {
@@ -65,12 +71,21 @@ namespace Task1
             bookList.Sort(tag);
         }
 
+        #endregion
+
+        #region Additional functionality
+
+        public IEnumerable<Book> GetBookList()
+        {
+            return new List<Book>(bookList);
+        }
+
         public void LoadBooksFromStorage(BookListStorage storage)
         {
             if (ReferenceEquals(storage, null))
                 throw new ArgumentNullException();
 
-            bookList = new List<Book>(storage.ReadBooksFromFile());
+            bookList = new List<Book>(storage.LoadFromFile());
         }
 
         public void SaveBooksInStorage(BookListStorage storage)
@@ -78,17 +93,9 @@ namespace Task1
             if (ReferenceEquals(storage, null))
                 throw new ArgumentNullException();
 
-            storage.WriteBooksToFile(bookList);
+            storage.SaveToFile(bookList);
         }
 
-        public IEnumerator<Book> GetEnumerator()
-        {
-            return bookList.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return bookList.GetEnumerator();
-        }
+        #endregion
     }
 }
