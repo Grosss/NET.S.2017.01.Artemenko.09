@@ -80,7 +80,7 @@ namespace Task1
             return new List<Book>(bookList);
         }
 
-        public void LoadBooksFromStorage(BookListStorage storage)
+        public void LoadBooksFromStorage(IStorage storage)
         {
             if (ReferenceEquals(storage, null))
                 throw new ArgumentNullException();
@@ -88,7 +88,7 @@ namespace Task1
             bookList = new List<Book>(storage.LoadFromFile());
         }
 
-        public void SaveBooksInStorage(BookListStorage storage)
+        public void SaveBooksInStorage(IStorage storage)
         {
             if (ReferenceEquals(storage, null))
                 throw new ArgumentNullException();

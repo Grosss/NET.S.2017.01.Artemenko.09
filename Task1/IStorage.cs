@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    interface IStorage
+    public interface IStorage
     {
         IEnumerable<Book> LoadFromFile();
         void SaveToFile(IEnumerable<Book> bookList);
