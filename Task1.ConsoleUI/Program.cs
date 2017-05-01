@@ -18,7 +18,7 @@ namespace Task1.ConsoleUI
             Book book4 = new Book("fourth", "C", 2003, 42);
             Book book5 = new Book("fifth", "W", 2013, 65);
 
-            BookListStorage storage = new BookListStorage("BookList.txt");
+            XmlSerializerStorage storage = new XmlSerializerStorage("letsTry.xml");
             var firstBookListService = new BookListService();
             var secondBookListService = new BookListService();
 
